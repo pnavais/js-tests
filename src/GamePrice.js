@@ -1,3 +1,4 @@
+'use strict';
 
 function GamePrice(gameId)  {
 	this._gameId = gameId;
