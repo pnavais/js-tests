@@ -40,8 +40,23 @@ const GamePrice    = require('./GamePrice');
  function SteamWishlistScraper()  {	
  }
 
- function parseGameList(body, response, resolveWithFullResponse) {
+/**
+ * Parses the Steam Wishlist of the given user name retrieving
+ * a list of GamePrice objects.
+ *
+ * @method
+ *
+ * @param {string} parsedBody - The HTML parsed body.
+ * @param {string} response   - The response status
+ * @param {string} resWithFR  - Resolve with full reponse. 
+ *                              meaning whether just the transformed body
+ *                              or the whole response shall be returned
+ * @return {List} the list of GamePrice objects.
+ */
+ function parseGameList(body, response, resWithFR) {
+ 	
  	const gameList = [];
+
  	// Parse the response
  	let $ = cheerio.load(body);
 
@@ -97,10 +112,6 @@ SteamWishlistScraper.prototype.getWishList = function(userName) {
 	};
 
     return new rp(options).promise();
-
 };
-
-
-
 
 module.exports = SteamWishlistScraper;
