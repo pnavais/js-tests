@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /**
  *  Copyright 2017 Payball
  *
@@ -111,7 +109,7 @@ SteamWishlistScraper.prototype.getWishList = function(userName) {
 		transform: parseGameList
 	};
 
-    return new rp(options).promise();
+    return rp(options).promise();
 };
 
 module.exports = SteamWishlistScraper;
