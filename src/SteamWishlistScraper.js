@@ -44,12 +44,12 @@ const GamePrice    = require('./GamePrice');
  *
  * @method
  *
- * @param {string} parsedBody - The HTML parsed body.
+ * @param {string} body       - The HTML parsed body.
  * @param {string} response   - The response status
  * @param {string} resWithFR  - Resolve with full reponse. 
  *                              meaning whether just the transformed body
  *                              or the whole response shall be returned
- * @return {List} the list of GamePrice objects.
+ * @return {Array} the list of GamePrice objects.
  */
  function parseGameList(body, response, resWithFR) {
  	
@@ -99,17 +99,18 @@ const GamePrice    = require('./GamePrice');
  * @method
  *
  * @param {string} userName - The Steam user name.
- * @return {List} the list of GamePrice objects.
+ * @return Promise.<T> list of GamePrice objects.
  */
 
-SteamWishlistScraper.prototype.getWishList = function(userName) {
-	
-	const options = {
-		uri: 'http://steamcommunity.com/id/' + userName + '/wishlist',
-		transform: parseGameList
-	};
+SteamWishlistScraper.prototype.getWishList = function (userName) {
+
+    const options = {
+        uri: 'http://steamcommunity.com/id/' + userName + '/wishlist',
+        transform: parseGameList
+    };
 
     return rp(options).promise();
+
 };
 
 module.exports = SteamWishlistScraper;
