@@ -82,7 +82,7 @@ const GamePrice    = require('./GamePrice');
 
  		// No price found
  		if (!price) {
- 			price = "X";
+ 			price = "-";
  		}
 
  		gamePrice.setPrice(price);
